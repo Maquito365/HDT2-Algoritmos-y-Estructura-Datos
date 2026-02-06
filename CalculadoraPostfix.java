@@ -11,22 +11,22 @@ public class CalculadoraPostfix {
         this.pila = new PilaStack<>();
         this.calculadora = new OperacionesAritmeticas();
     }
-    
+
     /**
      * Evalúa una expresión en notación postfix
      * @param expresion - String con la expresión postfix separada por espacios
      * @return el resultado de la evaluación
      */
     public int evaluar(String expresion) {
-        String[] tokens = expresion.trim().split("\\s+");
+        String[] tokens = expresion.trim().split("\\s+");// Separa la expresión por espacios
         
         // Limpiar la pila antes de evaluar
         pila = new PilaStack<>();
         
         for (String token : tokens) {
-            // Verificar si el token es un operador
+            // Verifica si el token es un operador
             if (esOperador(token)) {
-                // Pop dos operandos
+                 // Verifica que existan suficientes operandos
                 if (pila.size() < 2) {
                     throw new RuntimeException("Expresión postfix inválida: operadores insuficientes");
                 }
@@ -35,8 +35,11 @@ public class CalculadoraPostfix {
                 
                 int resultado = realizarOperacion(a, b, token);
                 pila.push(resultado);
+                //Muestra el valor actual al top de la pila
+                System.out.println("Tope actual de la pila: " + pila.peek());
+
             } else {
-                // Es un número, agregarlo a la pila
+                //Si no es un operador, se asume que es un número entero
                 try {
                     int numero = Integer.parseInt(token);
                     pila.push(numero);
