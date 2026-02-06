@@ -48,7 +48,7 @@ public class Main {
     /**
      * Evalúa expresiones postfix desde el archivo datos.txt
      */
-    private static void evaluarDesdeArchivo() {
+    public static void evaluarDesdeArchivo() {
         CalculadoraPostfix calculadora = new CalculadoraPostfix();
 
         try (BufferedReader lector = new BufferedReader(new FileReader(ARCHIVO))) {
