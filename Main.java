@@ -53,12 +53,12 @@ public class Main {
 
         try (BufferedReader lector = new BufferedReader(new FileReader(ARCHIVO))) {
             String linea;
-            int numeroLinea = 1;
+            int numeroLinea = 1; // Contador para el número de línea
 
-            while ((linea = lector.readLine()) != null) {
-                linea = linea.trim();
+            while ((linea = lector.readLine()) != null) { //verifica si la línea no es nula
+                linea = linea.trim(); // Elimina espacios en blanco al inicio y al final
 
-                if (linea.isEmpty()) continue;
+                if (linea.isEmpty()) continue; // Si la línea está vacía, se salta a la siguiente iteración
 
                 try {
                     int resultado = calculadora.evaluar(linea);
